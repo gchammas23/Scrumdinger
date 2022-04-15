@@ -21,8 +21,6 @@ struct DailyScrum: Identifiable {
         self.attendees = attendees
         self.lengthInMinutes = lengthInMinutes
         self.theme = theme
-        print(self.theme.mainColor)
-        print(self.theme.accentColor)
     }
 }
 
