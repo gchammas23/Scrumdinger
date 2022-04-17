@@ -28,6 +28,7 @@
 		C5F649052803802C003C508B /* TrailingIconLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F649042803802C003C508B /* TrailingIconLabelStyle.swift */; };
 		C5F7FAFA280C98FA005C8454 /* AVPlayer+Ding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F7FAF9280C98FA005C8454 /* AVPlayer+Ding.swift */; };
 		C5F7FAFC280C9912005C8454 /* ScrumTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F7FAFB280C9912005C8454 /* ScrumTimer.swift */; };
+		C5F7FAFE280C9A2C005C8454 /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = C5F7FAFD280C9A2C005C8454 /* ding.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		C5F649042803802C003C508B /* TrailingIconLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailingIconLabelStyle.swift; sourceTree = "<group>"; };
 		C5F7FAF9280C98FA005C8454 /* AVPlayer+Ding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayer+Ding.swift"; sourceTree = "<group>"; };
 		C5F7FAFB280C9912005C8454 /* ScrumTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrumTimer.swift; sourceTree = "<group>"; };
+		C5F7FAFD280C9A2C005C8454 /* ding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = ding.wav; path = ../../../../Downloads/UpdatingAppData/StartingProject/Scrumdinger/Resources/ding.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 		C5F7FAF6280C95F5005C8454 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C5F7FAFD280C9A2C005C8454 /* ding.wav */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5F7FAFE280C9A2C005C8454 /* ding.wav in Resources */,
 				C5F648DB2803710E003C508B /* Preview Assets.xcassets in Resources */,
 				C5F648D82803710E003C508B /* Assets.xcassets in Resources */,
 			);
