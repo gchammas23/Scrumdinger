@@ -23,6 +23,17 @@ struct DailyScrum: Identifiable {
         self.lengthInMinutes = lengthInMinutes
         self.theme = theme
     }
+    
+    /* The update function is a mutating one since it is changing the values of the properties in the struct
+     Structs are immutable so this function would create a new struct in place of the old one with the updated
+     value.
+     */
+    mutating func update(from data: Data) {
+        title = data.title
+        attendees = data.attendees
+        lengthInMinutes = Int(data.lengthInMinutes)
+        theme = data.theme
+    }
 }
 
 // Add sample data
@@ -45,5 +56,18 @@ extension DailyScrum {
             self.id = id
             self.name = name
         }
+    }
+    
+    // The Data struct will allow us to edit scrums in the edit view
+    struct Data {
+        var title: String = ""
+        var attendees: [Attendee] = []
+        var lengthInMinutes: Double = 5
+        var theme: Theme = .seafoam
+    }
+    
+    //data is a computed value that returns an instance of the Data struct with values of a DailyScrum to edit
+    var data: Data {
+        Data(title: title, attendees: attendees, lengthInMinutes: Double(lengthInMinutes), theme: theme)
     }
 }
