@@ -9,12 +9,31 @@ import SwiftUI
 
 @main
 struct ScrumdingerApp: App {
-    @State private var scrums = DailyScrum.sampleData
+    @StateObject private var store = ScrumStore()
     
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ScrumViews(scrums: $scrums)
+                ScrumViews(scrums: $store.scrums) {
+                    ScrumStore.save(scrums: store.scrums) { result in
+                        if case .failure(let error) = result {
+                            fatalError(error.localizedDescription)
+                        }
+                    }
+                }
+            }
+            .onAppear {
+                ScrumStore.load {result in
+                    // Check what came back from the completion closure
+                    switch(result) {
+                    case .failure(let error):
+                        // Throw an error in case of error
+                        fatalError(error.localizedDescription)
+                    case .success(let scrums):
+                        // Set store.scrums to be the scrums returned from the success of load function
+                        store.scrums = scrums
+                    }
+                }
             }
         }
     }
