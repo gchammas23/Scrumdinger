@@ -8,7 +8,7 @@
 import Foundation
 
 //Definition of a daily scrum meeting
-struct DailyScrum: Identifiable {
+struct DailyScrum: Identifiable, Codable {
     let id: UUID
     var title: String
     var attendees: [Attendee]
@@ -57,7 +57,7 @@ extension DailyScrum {
 
 // Add an Attendee struct to handle attendees in details page
 extension DailyScrum {
-    struct Attendee: Identifiable {
+    struct Attendee: Identifiable, Codable {
         let id: UUID
         var name: String
         
