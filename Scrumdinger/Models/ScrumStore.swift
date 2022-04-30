@@ -18,6 +18,25 @@ class ScrumStore: ObservableObject {
         try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) // Get base url for document folder
             .appendingPathComponent("scrums.data") // Append /scrums.data to the base URL and returns it
     }
+    
+    /**
+        Loads the contents of the scrums file using the async/await syntax, returns an arrat of Scrums or throws an error
+     */
+    static func load() async throws -> [DailyScrum] {
+        // The below function awaits for the load function to return
+        try await withCheckedThrowingContinuation { continuation in
+            load { result in
+                // Result returned will either be an error or an array of scrums to load
+                switch result {
+                case .failure(let error):
+                    continuation.resume(throwing: error)
+                case .success(let scrums):
+                    continuation.resume(returning: scrums)
+                }
+            }
+        }
+    }
+    
     /**
         Loads the contents of the scrums file, returns either an array of scrums or an error
      */
@@ -48,6 +67,25 @@ class ScrumStore: ObservableObject {
             }
         }
     }
+    
+    /**
+        Saves the passed array of scrums to the scrums.data file using async/await, returns the number of saved scrums to the file
+     */
+    @discardableResult // This means that we don't need anything that returns from the function
+    static func save(scrums: [DailyScrum]) async throws -> Int {
+        try await withCheckedThrowingContinuation { continuation in
+            save(scrums: scrums) { result in
+                // Returned result of the save function will be an error or an integer
+                switch result {
+                case .failure(let error):
+                    continuation.resume(throwing: error)
+                case .success(let scrumsSaved):
+                    continuation.resume(returning: scrumsSaved)
+                }
+            }
+        }
+    }
+    
     /**
         Saves the passed array of scrums to the scrums.data file, returns number of saved scrums to file
      */
